@@ -1,0 +1,12 @@
+[package]
+name = "openfiat-conformance"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+description = "Protocol conformance test vectors and vector-loading harness for OpenFiat."
+repository = "https://github.com/OpenFiat-org/openfiat-devtools"
+
+[dependencies]
+
+[dev-dependencies]
+serde_json = "1"

@@ -1,0 +1,9 @@
+[network]
+listen_addr = "0.0.0.0:30333"
+
+[rpc]
+listen_addr = "0.0.0.0:9944"
+
+[metrics]
+enabled = true
+listen_addr = "0.0.0.0:9615"

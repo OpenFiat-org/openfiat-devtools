@@ -1,0 +1,10 @@
+name: openfiat-devnet
+
+services:
+  node:
+    image: ghcr.io/openfiat-org/openfiat-node:latest
+    command: ["--dev"]
+    ports:
+      - "30333:30333"
+      - "9944:9944"
+    restart: unless-stopped
