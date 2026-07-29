@@ -18,10 +18,10 @@ same node identity and data.
 
 ```bash
 # Health check
-curl -s http://localhost:8080/health
+curl -s http://localhost:7080/health
 
 # JSON-RPC
-curl -s -X POST http://localhost:8080/rpc -H 'content-type: application/json' \
+curl -s -X POST http://localhost:7080/rpc -H 'content-type: application/json' \
   -d '{"jsonrpc":"2.0","id":1,"method":"getChainStatus","params":{}}'
 ```
 

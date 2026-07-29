@@ -9,7 +9,7 @@ services:
       - openfiat-testnet-data:/data
     ports:
       - "4001:4001/udp" # libp2p (QUIC)
-      - "8080:8080/tcp" # JSON-RPC, WebSocket, REST, health, metrics — one port
+      - "7080:7080/tcp" # JSON-RPC, WebSocket, REST, health, metrics — one port
     restart: unless-stopped
 
   prometheus:
