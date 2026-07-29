@@ -3,13 +3,13 @@ name: openfiat-testnet
 services:
   bootstrap-node:
     image: ghcr.io/openfiat-org/openfiat-node:latest
-    command: ["--config", "/etc/openfiat/node.toml", "--genesis", "/etc/openfiat/genesis.json"]
+    env_file:
+      - ./node.env
     volumes:
-      - ./node.toml:/etc/openfiat/node.toml:ro
-      - ./genesis.json:/etc/openfiat/genesis.json:ro
+      - openfiat-testnet-data:/data
     ports:
-      - "30333:30333"   # OFNP peer port
-      - "9944:9944"     # RPC port
+      - "4001:4001/udp" # libp2p (QUIC)
+      - "8080:8080/tcp" # JSON-RPC, WebSocket, REST, health, metrics — one port
     restart: unless-stopped
 
   prometheus:
@@ -25,3 +25,6 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+
+volumes:
+  openfiat-testnet-data:

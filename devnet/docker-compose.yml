@@ -3,8 +3,17 @@ name: openfiat-devnet
 services:
   node:
     image: ghcr.io/openfiat-org/openfiat-node:latest
-    command: ["--dev"]
+    environment:
+      CLI_DATA_DIR: /data
+      CLI_WALLET_PATH: /data/wallet.json
+      CLI_HTTP_ADDR: 0.0.0.0:8080
+      CLI_LISTEN_ADDR: /ip4/0.0.0.0/udp/4001/quic-v1
     ports:
-      - "30333:30333"
-      - "9944:9944"
+      - "8080:8080/tcp" # JSON-RPC, WebSocket, REST, health, metrics — one port
+      - "4001:4001/udp" # libp2p (QUIC)
+    volumes:
+      - openfiat-devnet-data:/data
     restart: unless-stopped
+
+volumes:
+  openfiat-devnet-data:
